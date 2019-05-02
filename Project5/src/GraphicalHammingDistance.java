@@ -32,6 +32,13 @@ public class GraphicalHammingDistance extends JFrame implements ChangeListener, 
     private Object String;
     JButton button2 = new JButton("Calculate HD");
     int[] counts = { 0, 0, 0, 0, 0};
+    JTextField dist0;
+    JTextField dist1;
+    JTextField dist2;
+    JTextField dist3; 
+    JTextField dist4;
+    JButton button3 = new JButton("Add Station");
+
     public void read(String file) throws IOException, FileNotFoundException
     {
         
@@ -63,10 +70,14 @@ public class GraphicalHammingDistance extends JFrame implements ChangeListener, 
                sort((String) box.getSelectedItem());
            }
            else if(event.getSource() == button2){
-               for (int i =0; i<names.size(); i++){
+               for (int i =0; i<counts.length; i++){
                    counts[i] = 0;
                }
-               counts = 
+               counts = CountDistances((String)box.getSelectedItem());
+               displayTheNodes();
+           }
+           else if(event.getSource() == button3){
+               
            }
     }
     
@@ -78,7 +89,12 @@ public class GraphicalHammingDistance extends JFrame implements ChangeListener, 
         }
     }
     public void displayTheNodes(){
-        dis0.setText(String.valueOf(counts[0]));
+        dist0.setText(((java.lang.String) String).valueOf(counts[0]));
+        dist1.setText(((java.lang.String) String).valueOf(counts[0]));
+        dist2.setText(((java.lang.String) String).valueOf(counts[0]));
+        dist3.setText(((java.lang.String) String).valueOf(counts[0]));
+        dist4.setText(((java.lang.String) String).valueOf(counts[0]));
+
     }
 
     public GraphicalHammingDistance() throws FileNotFoundException, IOException{
@@ -119,7 +135,7 @@ public class GraphicalHammingDistance extends JFrame implements ChangeListener, 
         rats.insets = new Insets(10,-83,10,10);
         text = new JTextField("                                                   ");
         text.setBounds(50, 25, 50, 0); 
-        text.setText(String.valueOf(slider.getValue()));
+        text.setText(((java.lang.String) String).valueOf(slider.getValue()));
         panel.add(text, rats);
         add(panel);
               
@@ -181,23 +197,23 @@ public class GraphicalHammingDistance extends JFrame implements ChangeListener, 
         //drop down box
         
         JLabel d0 = new JLabel("Distance 0");
-        JTextField dist0 = new JTextField("                              ");
+        dist0 =  new JTextField("                              ");
         
 
         JLabel d1 = new JLabel("Distance 1");
-        JTextField dist1 = new JTextField("                              ");
+        dist1 = new JTextField("                              ");
         
 
         JLabel d2 = new JLabel("Distance 2");
-        JTextField dist2 = new JTextField("                              ");
+       dist2 = new JTextField("                              ");
         
 
         JLabel d3 = new JLabel("Distance 3");
-        JTextField dist3 = new JTextField("                              ");
+        dist3 = new JTextField("                              ");
         
 
         JLabel d4 = new JLabel("Distance 4");
-        JTextField dist4 = new JTextField("                              ");
+        dist4 = new JTextField("                              ");
         
         rats.gridx = 0;
         rats.gridy = 10;
@@ -258,7 +274,7 @@ public class GraphicalHammingDistance extends JFrame implements ChangeListener, 
         rats.gridx = 0;
         rats.gridy = 20;
         
-        JButton button3 = new JButton("Add Station");
+       
         
         rats.anchor = GridBagConstraints.LINE_START;
         rats.insets = new Insets(20,0,0,0);
@@ -311,7 +327,7 @@ public class GraphicalHammingDistance extends JFrame implements ChangeListener, 
         return hd;
     }
 
-    public void CountDistances(String name)
+    public int[] CountDistances(String name)
     {
         // initializing two int arrays
         // These two arrays will be used to count the nodes for
@@ -328,6 +344,7 @@ public class GraphicalHammingDistance extends JFrame implements ChangeListener, 
             int distance = getDistance(name, names.get(i));
             counts[distance]++;
         }
+        return counts;
     }
     public class event implements ChangeListener{
         public void stateChanged (ChangeEvent e){
