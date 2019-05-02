@@ -1,3 +1,4 @@
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -38,6 +39,7 @@ public class GraphicalHammingDistance extends JFrame implements ChangeListener, 
     JTextField dist3; 
     JTextField dist4;
     JButton button3 = new JButton("Add Station");
+    JTextField button3Text = new JTextField("                              "); 
 
     public void read(String file) throws IOException, FileNotFoundException
     {
@@ -64,22 +66,7 @@ public class GraphicalHammingDistance extends JFrame implements ChangeListener, 
         // closes the buffered reader
         br.close();
     }
-    public void actionPerformed(ActionEvent event){
-           if(event.getSource() == button){
-               bigBox.setText("");
-               sort((String) box.getSelectedItem());
-           }
-           else if(event.getSource() == button2){
-               for (int i =0; i<counts.length; i++){
-                   counts[i] = 0;
-               }
-               counts = CountDistances((String)box.getSelectedItem());
-               displayTheNodes();
-           }
-           else if(event.getSource() == button3){
-               
-           }
-    }
+   
     
     public void sort(String name){
         for (String namess : names){
@@ -90,10 +77,10 @@ public class GraphicalHammingDistance extends JFrame implements ChangeListener, 
     }
     public void displayTheNodes(){
         dist0.setText(((java.lang.String) String).valueOf(counts[0]));
-        dist1.setText(((java.lang.String) String).valueOf(counts[0]));
-        dist2.setText(((java.lang.String) String).valueOf(counts[0]));
-        dist3.setText(((java.lang.String) String).valueOf(counts[0]));
-        dist4.setText(((java.lang.String) String).valueOf(counts[0]));
+        dist1.setText(((java.lang.String) String).valueOf(counts[1]));
+        dist2.setText(((java.lang.String) String).valueOf(counts[2]));
+        dist3.setText(((java.lang.String) String).valueOf(counts[3]));
+        dist4.setText(((java.lang.String) String).valueOf(counts[4]));
 
     }
 
@@ -281,7 +268,7 @@ public class GraphicalHammingDistance extends JFrame implements ChangeListener, 
         panel.add(button3, rats);
         add(panel);
         
-        JTextField button3Text = new JTextField("                              "); 
+      
         button3.addActionListener(this);
         rats.gridx = 1;
         rats.gridy = 20;
@@ -332,7 +319,11 @@ public class GraphicalHammingDistance extends JFrame implements ChangeListener, 
         // initializing two int arrays
         // These two arrays will be used to count the nodes for
         // WEST and BESS
-      
+        int d0 = 0;
+        int d1 =0;
+        int d2 = 0;
+        int d3 = 0;
+        int d4 = 0;
         //
         // Count all the instances of a particular distance between name
         // and all the other names stored in "otherNames".
@@ -342,10 +333,48 @@ public class GraphicalHammingDistance extends JFrame implements ChangeListener, 
         for (int i = 0; i < names.size(); i++)
         {
             int distance = getDistance(name, names.get(i));
-            counts[distance]++;
+            if(distance ==0)   {
+                ++d0;
+            }
+            else if(distance == 1){
+                ++d1;
+            }
+            else if (distance ==2){
+                ++d2;
+            }
+            else if(distance ==3){
+                ++d3;
+                
+            }
+            else if (distance ==4){
+                ++d4;
+            }
         }
+        counts[0] = d0;
+        counts[1] = d1;
+        counts[2] = d2;
+        counts[3] = d3;
+        counts[4] = d4;
         return counts;
     }
+    public void actionPerformed(ActionEvent event){
+        if(event.getSource() == button){
+            bigBox.setText("");
+            sort((String) box.getSelectedItem());
+        }
+        else if(event.getSource() == button2){
+            counts = CountDistances((String)box.getSelectedItem());
+            displayTheNodes();
+        }
+        else if(event.getSource() == button3){
+            String input = button3Text.getText();
+            if(((DefaultComboBoxModel)box.getModel()).getIndexOf(input) == -1) {
+                box.addItem(input );
+              }
+           
+            
+        }
+ }
     public class event implements ChangeListener{
         public void stateChanged (ChangeEvent e){
             int value = slider.getValue(); 
