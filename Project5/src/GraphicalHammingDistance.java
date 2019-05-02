@@ -66,6 +66,7 @@ public class GraphicalHammingDistance extends JFrame implements ChangeListener, 
                for (int i =0; i<names.size(); i++){
                    counts[i] = 0;
                }
+               counts = 
            }
     }
     
@@ -75,6 +76,9 @@ public class GraphicalHammingDistance extends JFrame implements ChangeListener, 
                 bigBox.append(namess + "\n");
             }
         }
+    }
+    public void displayTheNodes(){
+        dis0.setText(String.valueOf(counts[0]));
     }
 
     public GraphicalHammingDistance() throws FileNotFoundException, IOException{
