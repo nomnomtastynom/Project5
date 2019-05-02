@@ -70,3 +70,6 @@ Public static void main:
 -This is the method where the jframe is given the parameters. When it will be closed, what the sizing will be, as well whether it is visible or not and even a title. It also calls the constructor so that the code will actually run.
 
 I have to say, this project was really hard. It was long and tedious, but I guess that is how real life projects. I cant say I was glad doing this but at the same time, I have to say I learned a lot. This I beleive too me about 12 hours to do and that is crazy. I realized how much I didnt know as well and oh boy am I glad to be done with it now!
+
+
+![Capture 3](https://user-images.githubusercontent.com/25664890/57073888-04106680-6ca8-11e9-81ca-fcf050b9c87e.PNG)
