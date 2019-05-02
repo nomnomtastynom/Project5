@@ -171,6 +171,7 @@ public class GraphicalHammingDistance extends JFrame
         
         rats.gridx = 0;
         rats.gridy = 10;
+        rats.insets = new Insets(0,0,0,0);
         rats.anchor = GridBagConstraints.LINE_START;
         panel.add(d0, rats);
         
@@ -196,35 +197,50 @@ public class GraphicalHammingDistance extends JFrame
         
         rats.gridx = 1;
         rats.gridy = 10;
-        rats.insets = new Insets(0,-120,0,0);
+        rats.insets = new Insets(0,-80,0,0);
         panel.add(dist0, rats);
         
         rats.gridx = 1;
         rats.gridy = 12;
-        rats.insets = new Insets(0,-120,0,0);
+        rats.insets = new Insets(0,-80,0,0);
         panel.add(dist1, rats);
         
 
         rats.gridx = 1;
         rats.gridy = 14;
-        rats.insets = new Insets(0,-120,0,0);
+        rats.insets = new Insets(0,-80,0,0);
         panel.add(dist2, rats);
         
 
         rats.gridx = 1;
         rats.gridy = 16;
-        rats.insets = new Insets(0,-120,0,0);
+        rats.insets = new Insets(0,-80,0,0);
         panel.add(dist3, rats);
         
 
         rats.gridx = 1;
         rats.gridy = 18;
-        rats.insets = new Insets(0,-120,0,0);
+        rats.insets = new Insets(0,-80,0,0);
         panel.add(dist4, rats);
         
         
+        rats = new GridBagConstraints();
+        rats.gridx = 0;
+        rats.gridy = 20;
         
+        JButton button3 = new JButton("Add Station");
         
+        rats.anchor = GridBagConstraints.LINE_START;
+        rats.insets = new Insets(20,0,0,0);
+        panel.add(button3, rats);
+        add(panel);
+        
+        JTextField button3Text = new JTextField("                              "); 
+        rats.gridx = 1;
+        rats.gridy = 20;
+        rats.anchor = GridBagConstraints.LINE_START;
+        rats.insets = new Insets(0,-80,0,0);
+        panel.add(button3Text, rats);
     }
   
     public void stateChanged(ChangeEvent event) {
