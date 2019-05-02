@@ -15,6 +15,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 public class GraphicalHammingDistance extends JFrame 
 {
         
@@ -23,6 +24,7 @@ public class GraphicalHammingDistance extends JFrame
     JLabel label;
     JPanel panel = new JPanel(new GridBagLayout());
     JTextField text ;
+    Object[] namesss = names.toArray();
     public void read(String file) throws IOException, FileNotFoundException
     {
         
@@ -142,7 +144,7 @@ public class GraphicalHammingDistance extends JFrame
         rats.gridx = 1;
         rats.gridy = 8;
         
-        Object[] namesss = names.toArray();
+       
         @SuppressWarnings("unchecked")
         
         //drop down box
@@ -260,8 +262,37 @@ public class GraphicalHammingDistance extends JFrame
 
      }
     
-    
+    public int getDistance(String one, String two)
+    {
+        int hd = 0;
+        for (int i = 0; i < 4; i++)
+        {
+            if (one.charAt(i) != two.charAt(i))
+            {
+                hd = hd + 1;
+            }
+        }
+        return hd;
+    }
 
+    public void CountDistances(String name)
+    {
+        // initializing two int arrays
+        // These two arrays will be used to count the nodes for
+        // WEST and BESS
+        int[] counts = { 0, 0, 0, 0, 0 };
+        //
+        // Count all the instances of a particular distance between name
+        // and all the other names stored in "otherNames".
+        //
+        // Creating a for loop that will loop through the STids and count the
+        // hamming distance between the name1 and the rest
+        for (int i = 0; i < namesss .length; i++)
+        {
+            int distance = getDistance(name, namesss.length[i]);
+            counts[distance]++;
+        }
+    }
     public class event implements ChangeListener{
         public void stateChanged (ChangeEvent e){
             int value = slider.getValue(); 
