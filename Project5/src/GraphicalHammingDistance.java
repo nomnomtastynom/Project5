@@ -34,6 +34,7 @@ public class GraphicalHammingDistance extends JFrame
         slider.setMajorTickSpacing(1);
         slider.setPaintTicks(true);
         slider.setPaintLabels(true);
+        rats.insets = new Insets(0,80,0,0);
         rats.anchor = GridBagConstraints.LINE_START;
         panel.add(slider, rats2);
         add(panel);
@@ -56,7 +57,7 @@ public class GraphicalHammingDistance extends JFrame
         JButton button = new JButton("Show Station");
         
         rats.anchor = GridBagConstraints.LINE_START;
-        button = new Insets(10,10,10,10);
+        rats.insets = new Insets(20,0,10,10);
         panel.add(button, rats);
         add(panel);
        
