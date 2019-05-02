@@ -105,6 +105,7 @@ public class GraphicalHammingDistance extends JFrame implements ChangeListener, 
         rats2.gridx = 0;
         rats2.gridy = 1;
         slider  = new JSlider(1, 4);
+        slider.addChangeListener(this);
         slider.setMajorTickSpacing(1);
         slider.setPaintTicks(true);
         slider.setPaintLabels(true);
@@ -293,6 +294,9 @@ public class GraphicalHammingDistance extends JFrame implements ChangeListener, 
       
 
      }
+    public void stateChange(ChangeEvent b){
+        text.setText(((java.lang.String) String).valueOf(slider.getValue()));
+    }
 
     public void dropDown(){
 
@@ -378,7 +382,7 @@ public class GraphicalHammingDistance extends JFrame implements ChangeListener, 
     public class event implements ChangeListener{
         public void stateChanged (ChangeEvent e){
             int value = slider.getValue(); 
-            label.setText("Enter Hamming Dist: " + value);
+        
         }
     }
     
