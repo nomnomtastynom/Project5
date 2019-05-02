@@ -37,14 +37,21 @@ public class GraphicalHammingDistance extends JFrame
         panel.add(slider, rats2);
         add(panel);
         
-        JTextField text = new JTextField("");
+        rats = new GridBagConstraints();
+        rats.gridx = 1;
+        rats.gridy = 0;
+        JTextField text = new JTextField("  ");
         text.setBounds(50, 25, 50, 0);
-        add(text);
+        panel.add(text, rats);
+        add(panel);
               
-        
+        rats = new GridBagConstraints();
+        rats.gridx = 0;
+        rats.gridy = 2;
         JButton button = new JButton();
         button.setBounds(0,100,50,50);
-        add(button);
+        panel.add(button, rats);
+        add(panel);
        
         event e = new event();
         slider.addChangeListener(e);
