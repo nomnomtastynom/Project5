@@ -151,23 +151,23 @@ public class GraphicalHammingDistance extends JFrame
         add(panel);
         
         JLabel d0 = new JLabel("Distance 0");
-        JTextField dist0 = new JTextField("            ");
+        JTextField dist0 = new JTextField("                              ");
         
 
         JLabel d1 = new JLabel("Distance 1");
-        JTextField dist1 = new JTextField("            ");
+        JTextField dist1 = new JTextField("                              ");
         
 
         JLabel d2 = new JLabel("Distance 2");
-        JTextField dist2 = new JTextField("            ");
+        JTextField dist2 = new JTextField("                              ");
         
 
         JLabel d3 = new JLabel("Distance 3");
-        JTextField dist3 = new JTextField("            ");
+        JTextField dist3 = new JTextField("                              ");
         
 
         JLabel d4 = new JLabel("Distance 4");
-        JTextField dist4 = new JTextField("            ");
+        JTextField dist4 = new JTextField("                              ");
         
         rats.gridx = 0;
         rats.gridy = 10;
@@ -218,7 +218,7 @@ public class GraphicalHammingDistance extends JFrame
         
 
         rats.gridx = 1;
-        rats.gridy = 12;
+        rats.gridy = 18;
         rats.insets = new Insets(0,-120,0,0);
         panel.add(dist4, rats);
         
