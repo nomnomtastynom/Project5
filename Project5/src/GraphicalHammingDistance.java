@@ -58,8 +58,10 @@ public class GraphicalHammingDistance extends JFrame
         
         rats.gridx = 0;
         rats.gridy = 0;
+        rats.insets = new Insets(-30,0,0,0);
         rats.anchor = GridBagConstraints.LINE_START;
         label = new JLabel("Enter Hamming Dist: ");
+       
         panel.add(label, rats);
         add(panel);
 
@@ -70,7 +72,7 @@ public class GraphicalHammingDistance extends JFrame
         slider.setMajorTickSpacing(1);
         slider.setPaintTicks(true);
         slider.setPaintLabels(true);
-        rats.insets = new Insets(0,80,0,0);
+        rats.insets = new Insets(0,0,0,0);
         rats.anchor = GridBagConstraints.LINE_START;
        
         panel.add(slider, rats2);
@@ -105,7 +107,7 @@ public class GraphicalHammingDistance extends JFrame
         rats.gridy = 5;
         
         rats.insets = new Insets(20, 30, 10, 10);
-        JTextArea bigBox = new JTextArea(20,20);
+        JTextArea bigBox = new JTextArea(15,15);
         //bigBox.setSize(10,10);
         panel.add(bigBox, rats);
         add(panel);
@@ -148,9 +150,71 @@ public class GraphicalHammingDistance extends JFrame
         panel.add(stations, rats);
         add(panel);
         
-        
+        JLabel d0 = new JLabel("Distance 0");
+        JTextField dist0 = new JTextField("            ");
         
 
+        JLabel d1 = new JLabel("Distance 1");
+        JTextField dist1 = new JTextField("            ");
+        
+
+        JLabel d2 = new JLabel("Distance 2");
+        JTextField dist2 = new JTextField("            ");
+        
+
+        JLabel d3 = new JLabel("Distance 3");
+        JTextField dist3 = new JTextField("            ");
+        
+
+        JLabel d4 = new JLabel("Distance 4");
+        JTextField dist4 = new JTextField("            ");
+        
+        rats.gridx = 0;
+        rats.gridy = 10;
+        rats.anchor = GridBagConstraints.LINE_START;
+        panel.add(d0, rats);
+        
+        rats.gridx = 0;
+        rats.gridy = 12;
+        rats.anchor = GridBagConstraints.LINE_START;
+        panel.add(d1, rats);
+        
+        rats.gridx = 0;
+        rats.gridy = 14;
+        rats.anchor = GridBagConstraints.LINE_START;
+        panel.add(d2, rats);
+        
+        rats.gridx = 0;
+        rats.gridy = 16;
+        rats.anchor = GridBagConstraints.LINE_START;
+        panel.add(d3, rats);
+        
+        rats.gridx = 0;
+        rats.gridy = 18;
+        rats.anchor = GridBagConstraints.LINE_START;
+        panel.add(d4, rats);
+        
+        rats.gridx = 1;
+        rats.gridy = 10;
+        rats.insets = new Insets(0,-120,0,0);
+        panel.add(dist0, rats);
+        
+        rats.gridx = 1;
+        rats.gridy = 12;
+        rats.insets = new Insets(0,-120,0,0);
+        panel.add(dist1, rats);
+        
+
+        rats.gridx = 1;
+        rats.gridy = 12;
+        rats.insets = new Insets(0,-120,0,0);
+        panel.add(dist2, rats);
+        
+
+        rats.gridx = 1;
+        rats.gridy = 12;
+        rats.insets = new Insets(0,-120,0,0);
+        panel.add(dist3, rats);
     }
   
     public void stateChanged(ChangeEvent event) {
@@ -182,7 +246,7 @@ public class GraphicalHammingDistance extends JFrame
     public static void main (String [] args) throws FileNotFoundException, IOException{ 
         GraphicalHammingDistance test = new GraphicalHammingDistance();
         test.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        test.setSize(500,500);
+        test.setSize(800,800);
         test.setVisible(true);
         test.setTitle("Hamming Distance");
         
