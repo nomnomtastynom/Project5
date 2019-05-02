@@ -40,7 +40,8 @@ public class GraphicalHammingDistance extends JFrame
         rats = new GridBagConstraints();
         rats.gridx = 1;
         rats.gridy = 0;
-        JTextField text = new JTextField("  ");
+        rats.insets = new Insets(10,-60,10,10);
+        JTextField text = new JTextField("          ");
         text.setBounds(50, 25, 50, 0);
         panel.add(text, rats);
         add(panel);
