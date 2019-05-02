@@ -10,13 +10,15 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-public class GraphicalHammingDistance extends JFrame 
+public class GraphicalHammingDistance extends JFrame implements ChangeListener, ActionListener
 {
         
     ArrayList<String> names = new ArrayList<String>();
@@ -24,7 +26,12 @@ public class GraphicalHammingDistance extends JFrame
     JLabel label;
     JPanel panel = new JPanel(new GridBagLayout());
     JTextField text ;
-    Object[] namesss = names.toArray();
+    JComboBox box = new JComboBox();
+    JButton button = new JButton("Show Station");
+    JTextArea bigBox = new JTextArea(15,15);
+    private Object String;
+    JButton button2 = new JButton("Calculate HD");
+    int[] counts = { 0, 0, 0, 0, 0};
     public void read(String file) throws IOException, FileNotFoundException
     {
         
@@ -50,6 +57,25 @@ public class GraphicalHammingDistance extends JFrame
         // closes the buffered reader
         br.close();
     }
+    public void actionPerformed(ActionEvent event){
+           if(event.getSource() == button){
+               bigBox.setText("");
+               sort((String) box.getSelectedItem());
+           }
+           else if(event.getSource() == button2){
+               for (int i =0; i<names.size(); i++){
+                   counts[i] = 0;
+               }
+           }
+    }
+    
+    public void sort(String name){
+        for (String namess : names){
+            if(getDistance(namess, name) == slider.getValue()){
+                bigBox.append(namess + "\n");
+            }
+        }
+    }
 
     public GraphicalHammingDistance() throws FileNotFoundException, IOException{
        
@@ -58,6 +84,7 @@ public class GraphicalHammingDistance extends JFrame
         setLayout(new GridBagLayout());
        GridBagConstraints rats = new GridBagConstraints();
         
+       dropDown();
         rats.gridx = 0;
         rats.gridy = 0;
         rats.insets = new Insets(-30,0,0,0);
@@ -96,8 +123,8 @@ public class GraphicalHammingDistance extends JFrame
         rats.gridx = 0;
         rats.gridy = 3;
         
-        JButton button = new JButton("Show Station");
-        
+
+        button.addActionListener(this);
         rats.anchor = GridBagConstraints.LINE_START;
         rats.insets = new Insets(20,0,10,10);
         panel.add(button, rats);
@@ -109,7 +136,7 @@ public class GraphicalHammingDistance extends JFrame
         rats.gridy = 5;
         
         rats.insets = new Insets(20, 30, 10, 10);
-        JTextArea bigBox = new JTextArea(15,15);
+        
         //bigBox.setSize(10,10);
         panel.add(bigBox, rats);
         add(panel);
@@ -132,8 +159,8 @@ public class GraphicalHammingDistance extends JFrame
         rats.gridx = 0;
         rats.gridy = 9;
         
-        JButton button2 = new JButton("Calculate HD");
-        
+
+        button2.addActionListener(this);
         rats.anchor = GridBagConstraints.LINE_START;
         rats.insets = new Insets(20,0,10,10);
         panel.add(button2, rats);
@@ -143,14 +170,11 @@ public class GraphicalHammingDistance extends JFrame
         rats = new GridBagConstraints();
         rats.gridx = 1;
         rats.gridy = 8;
-        
+        panel.add(box, rats);
        
         @SuppressWarnings("unchecked")
         
         //drop down box
-        JComboBox stations = new JComboBox(namesss);
-        panel.add(stations, rats);
-        add(panel);
         
         JLabel d0 = new JLabel("Distance 0");
         JTextField dist0 = new JTextField("                              ");
@@ -238,6 +262,7 @@ public class GraphicalHammingDistance extends JFrame
         add(panel);
         
         JTextField button3Text = new JTextField("                              "); 
+        button3.addActionListener(this);
         rats.gridx = 1;
         rats.gridy = 20;
         rats.anchor = GridBagConstraints.LINE_START;
@@ -261,6 +286,13 @@ public class GraphicalHammingDistance extends JFrame
       
 
      }
+
+    public void dropDown(){
+
+     for( String thing : names)
+     box.addItem(thing);
+     
+     }
     
     public int getDistance(String one, String two)
     {
@@ -280,16 +312,16 @@ public class GraphicalHammingDistance extends JFrame
         // initializing two int arrays
         // These two arrays will be used to count the nodes for
         // WEST and BESS
-        int[] counts = { 0, 0, 0, 0, 0 };
+      
         //
         // Count all the instances of a particular distance between name
         // and all the other names stored in "otherNames".
         //
         // Creating a for loop that will loop through the STids and count the
         // hamming distance between the name1 and the rest
-        for (int i = 0; i < namesss .length; i++)
+        for (int i = 0; i < names.size(); i++)
         {
-            int distance = getDistance(name, namesss.length[i]);
+            int distance = getDistance(name, names.get(i));
             counts[distance]++;
         }
     }
