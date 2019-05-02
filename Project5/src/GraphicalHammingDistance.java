@@ -206,13 +206,13 @@ public class GraphicalHammingDistance extends JFrame
         
 
         rats.gridx = 1;
-        rats.gridy = 12;
+        rats.gridy = 14;
         rats.insets = new Insets(0,-120,0,0);
         panel.add(dist2, rats);
         
 
         rats.gridx = 1;
-        rats.gridy = 12;
+        rats.gridy = 16;
         rats.insets = new Insets(0,-120,0,0);
         panel.add(dist3, rats);
         
@@ -221,6 +221,10 @@ public class GraphicalHammingDistance extends JFrame
         rats.gridy = 12;
         rats.insets = new Insets(0,-120,0,0);
         panel.add(dist4, rats);
+        
+        
+        
+        
     }
   
     public void stateChanged(ChangeEvent event) {
