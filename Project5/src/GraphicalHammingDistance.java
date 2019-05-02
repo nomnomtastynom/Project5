@@ -50,7 +50,10 @@ public class GraphicalHammingDistance extends JFrame
     }
 
     public GraphicalHammingDistance() throws FileNotFoundException, IOException{
-       setLayout(new GridBagLayout());
+       
+        read("C:\\Users\\sarat\\workspace\\Project5\\src\\Mesonet.txt");
+        
+        setLayout(new GridBagLayout());
        GridBagConstraints rats = new GridBagConstraints();
         
         rats.gridx = 0;
@@ -69,7 +72,7 @@ public class GraphicalHammingDistance extends JFrame
         slider.setPaintLabels(true);
         rats.insets = new Insets(0,80,0,0);
         rats.anchor = GridBagConstraints.LINE_START;
-        slider.addMouseListener( this);
+       
         panel.add(slider, rats2);
         
         add(panel);
@@ -133,10 +136,19 @@ public class GraphicalHammingDistance extends JFrame
         add(panel);
         
    
-   
+        rats = new GridBagConstraints();
+        rats.gridx = 1;
+        rats.gridy = 8;
+        
         Object[] namesss = names.toArray();
         @SuppressWarnings("unchecked")
+        
+        //drop down box
         JComboBox stations = new JComboBox(namesss);
+        panel.add(stations, rats);
+        add(panel);
+        
+        
         
 
     }
