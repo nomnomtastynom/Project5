@@ -1,0 +1,68 @@
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSlider;
+import javax.swing.JTextField;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
+import java.awt.*;
+public class GraphicalHammingDistance extends JFrame 
+{
+        
+    
+    JSlider slider;
+    JLabel label;
+    JPanel panel = new JPanel(new GridBagLayout());
+    
+    public GraphicalHammingDistance(){
+       setLayout(new GridBagLayout());
+       GridBagConstraints rats = new GridBagConstraints();
+        
+        rats.gridx = 0;
+        rats.gridy = 0;
+        label = new JLabel("Enter Hamming Dist: ");
+        panel.add(label, rats);
+        add(panel);
+
+        GridBagConstraints rats2 = new GridBagConstraints();
+        rats2.gridx = 0;
+        rats2.gridy = 1;
+        slider  = new JSlider(1, 4);
+        slider.setMajorTickSpacing(1);
+        slider.setPaintTicks(true);
+        slider.setPaintLabels(true);
+        rats.anchor = GridBagConstraints.LINE_START;
+        panel.add(slider, rats2);
+        add(panel);
+        
+        JTextField text = new JTextField("");
+        text.setBounds(50, 25, 50, 0);
+        add(text);
+              
+        
+        JButton button = new JButton();
+        button.setBounds(0,100,50,50);
+        add(button);
+       
+        event e = new event();
+        slider.addChangeListener(e);
+
+    }
+    public class event implements ChangeListener{
+        public void stateChanged (ChangeEvent e){
+            int value = slider.getValue(); 
+            label.setText("Enter Hamming Dist: " + value);
+        }
+    }
+    
+    public static void main (String [] args){ 
+        GraphicalHammingDistance test = new GraphicalHammingDistance();
+        test.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        test.setSize(500,500);
+        test.setVisible(true);
+        test.setTitle("Hamming Distance");
+         
+    }
+}
