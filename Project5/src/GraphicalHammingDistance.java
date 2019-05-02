@@ -3,6 +3,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -62,8 +63,20 @@ public class GraphicalHammingDistance extends JFrame
         add(panel);
        
         
+        rats = new GridBagConstraints();
+        rats.gridx = 0;
+        rats.gridy = 5;
+        
+        rats.insets = new Insets(20, 30, 10, 10);
+        JTextArea bigBox = new JTextArea();
+        bigBox.setSize(100,100);
+        panel.add(bigBox, rats);
+        add(panel);
+             
         event e = new event();
         slider.addChangeListener(e);
+        
+        
 
     }
     public class event implements ChangeListener{
