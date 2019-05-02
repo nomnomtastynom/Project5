@@ -22,6 +22,7 @@ public class GraphicalHammingDistance extends JFrame
     JSlider slider;
     JLabel label;
     JPanel panel = new JPanel(new GridBagLayout());
+    JTextField text ;
     public void read(String file) throws IOException, FileNotFoundException
     {
         
@@ -68,6 +69,7 @@ public class GraphicalHammingDistance extends JFrame
         slider.setPaintLabels(true);
         rats.insets = new Insets(0,80,0,0);
         rats.anchor = GridBagConstraints.LINE_START;
+        slider.addMouseListener( this);
         panel.add(slider, rats2);
         
         add(panel);
@@ -77,7 +79,7 @@ public class GraphicalHammingDistance extends JFrame
         rats.gridy = 0;
         
         rats.insets = new Insets(10,-83,10,10);
-        JTextField text = new JTextField("                                                   ");
+        text = new JTextField("                                                   ");
         text.setBounds(50, 25, 50, 0); 
         text.setText(String.valueOf(slider.getValue()));
         panel.add(text, rats);
@@ -139,7 +141,22 @@ public class GraphicalHammingDistance extends JFrame
 
     }
   
-    
+    public void stateChanged(ChangeEvent event) {
+        int sliderVal;            // Slider value (int)
+        String strSliderVal;      // Slider value (string)
+
+        // Get source of event (2 sliders in GUI)
+        JSlider sourceEvent = (JSlider) event.getSource();
+
+        if (sourceEvent == slider) {
+           sliderVal = slider.getValue();      // Get slider value
+           strSliderVal = Integer.toString(sliderVal); // Conver to int
+           text.setText(strSliderVal); 
+           // Update display
+        }
+      
+
+     }
     
     
 
