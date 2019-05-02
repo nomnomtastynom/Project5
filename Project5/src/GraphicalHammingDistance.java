@@ -22,6 +22,7 @@ public class GraphicalHammingDistance extends JFrame
         
         rats.gridx = 0;
         rats.gridy = 0;
+        rats.anchor = GridBagConstraints.LINE_START;
         label = new JLabel("Enter Hamming Dist: ");
         panel.add(label, rats);
         add(panel);
@@ -40,20 +41,26 @@ public class GraphicalHammingDistance extends JFrame
         rats = new GridBagConstraints();
         rats.gridx = 1;
         rats.gridy = 0;
-        rats.insets = new Insets(10,-60,10,10);
-        JTextField text = new JTextField("          ");
+        
+        rats.insets = new Insets(10,-80,10,10);
+        JTextField text = new JTextField("                                            ");
         text.setBounds(50, 25, 50, 0);
+        
         panel.add(text, rats);
         add(panel);
               
         rats = new GridBagConstraints();
         rats.gridx = 0;
-        rats.gridy = 2;
-        JButton button = new JButton();
-        button.setBounds(0,100,50,50);
+        rats.gridy = 3;
+        
+        JButton button = new JButton("Show Station");
+        
+        rats.anchor = GridBagConstraints.LINE_START;
+        button = new Insets(10,10,10,10);
         panel.add(button, rats);
         add(panel);
        
+        
         event e = new event();
         slider.addChangeListener(e);
 
